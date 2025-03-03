@@ -1,0 +1,255 @@
+/* App.css - Complete Version */
+:root {
+  --primary: #2563eb;
+  --primary-hover: #1d4ed8;
+  --background: #ffffff;
+  --surface: #f8fafc;
+  --text: #0f172a;
+  --border: #e2e8f0;
+  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --radius: 8px;
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.dark-mode {
+  --primary: #3b82f6;
+  --background: #0f172a;
+  --surface: #1e293b;
+  --text: #f8fafc;
+  --border: #334155;
+}
+
+/* Base Styles */
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background: var(--background);
+  color: var(--text);
+  transition: var(--transition);
+}
+
+/* Header Styles */
+.header {
+  position: sticky;
+  top: 0;
+  background: var(--background);
+  box-shadow: var(--shadow);
+  z-index: 1000;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  padding: 0 2rem;
+}
+
+.header-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.hamburger {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: var(--text);
+  cursor: pointer;
+  padding: 0.5rem;
+  margin-right: 1rem;
+}
+
+/* Main Content Layout */
+.main-content {
+  flex: 1;
+  display: flex;
+  position: relative;
+  height: calc(100vh - 60px);
+}
+
+/* Sidebar Styles */
+.sidebar {
+  width: 280px;
+  background: var(--surface);
+  position: fixed;
+  left: 0;
+  top: 60px;
+  bottom: 0;
+  z-index: 999;
+  transform: translateX(-100%);
+  transition: var(--transition);
+  border-right: 1px solid var(--border);
+  overflow-y: auto;
+}
+
+.sidebar.open {
+  transform: translateX(0);
+}
+
+.sidebar-header {
+  padding: 1.5rem;
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  background: var(--surface);
+  z-index: 1;
+}
+
+/* File Upload Section */
+.file-upload-card {
+  background: var(--background);
+  margin: 1.5rem;
+  padding: 1.5rem;
+  border-radius: var(--radius);
+  border: 2px dashed var(--border);
+  transition: var(--transition);
+}
+
+.upload-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+  color: var(--text);
+}
+
+.upload-icon {
+  font-size: 2rem;
+}
+
+.file-input {
+  display: none;
+}
+
+.file-types {
+  color: var(--text);
+  opacity: 0.8;
+  font-size: 0.875rem;
+  margin-top: 1rem;
+  text-align: center;
+}
+
+/* Features Menu */
+.features-menu {
+  padding: 0 1.5rem;
+}
+
+.feature-item {
+  padding: 1rem;
+  margin: 0.5rem 0;
+  border-radius: var(--radius);
+  color: var(--text);
+  background: var(--background);
+  transition: var(--transition);
+  cursor: pointer;
+}
+
+.feature-item:hover {
+  transform: translateX(8px);
+  box-shadow: var(--shadow);
+}
+
+/* Viewer Container */
+.viewer-container {
+  flex: 1;
+  margin-left: 280px;
+  height: 100%;
+  transition: var(--transition);
+  padding: 1rem;
+}
+
+.sidebar:not(.open) + .viewer-container {
+  margin-left: 0;
+}
+
+.webviewer {
+  height: 100% !important;
+  width: 100% !important;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  background: var(--background);
+}
+
+/* Theme Toggle */
+.theme-toggle {
+  background: var(--surface);
+  border: none;
+  padding: 0.75rem;
+  border-radius: var(--radius);
+  cursor: pointer;
+  color: var(--text);
+  transition: var(--transition);
+}
+
+.theme-toggle:hover {
+  transform: scale(1.05);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .header {
+    padding: 0 1rem;
+    height: 50px;
+  }
+  
+  .logo {
+    font-size: 1.25rem;
+  }
+  
+  .sidebar {
+    width: 100%;
+    top: 50px;
+    transform: translateX(-100%);
+  }
+  
+  .viewer-container {
+    margin-left: 0;
+    padding: 0.5rem;
+    height: calc(100vh - 50px);
+  }
+  
+  .file-upload-card {
+    margin: 1rem;
+    padding: 1rem;
+  }
+  
+  .feature-item {
+    padding: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    padding: 0 0.5rem;
+  }
+  
+  .logo span:first-child {
+    display: none;
+  }
+  
+  .webviewer {
+    border-radius: 0;
+  }
+}
